@@ -18,10 +18,10 @@ async function listarEnderecos() {
         }
 
         const respostaData = await respostaApi.json();
-        console.log("Dados da resposta:", respostaData); // Para depuração
+        console.log("Dados da resposta:", respostaData); 
 
         // Acesse a propriedade `data` que contém os endereços
-        exibirEnderecos(respostaData.data || []); // Usa um array vazio se não houver endereços
+        exibirEnderecos(respostaData.data || []); 
 
     } catch (error) {
         console.error("Erro na requisição:", error);
@@ -50,16 +50,16 @@ function exibirEnderecos(enderecos) {
         // Cria o botão de exclusão
         const botaoExcluir = document.createElement('button');
         botaoExcluir.textContent = 'Excluir';
-        botaoExcluir.onclick = () => excluirEndereco(endereco.id); // Passa o ID do endereço para a função de exclusão
+        botaoExcluir.onclick = () => excluirEndereco(endereco.id); 
 
         // Cria o botão de alteração
         const botaoAlterar = document.createElement('button');
         botaoAlterar.textContent = 'Alterar';
-        botaoAlterar.onclick = () => alterarEndereco(endereco.id); // Passa o ID do endereço para a função de alterar
+        botaoAlterar.onclick = () => alterarEndereco(endereco.id); 
         
         item.appendChild(botaoExcluir);
-        item.appendChild(botaoAlterar); // Adiciona o botão ao item da lista
-        listaEnderecos.appendChild(item); // Adiciona o item à lista
+        item.appendChild(botaoAlterar); 
+        listaEnderecos.appendChild(item); 
     });
 }
 
@@ -81,7 +81,7 @@ async function excluirEndereco(id) {
 
         alert("Endereço excluído com sucesso!");
         
-        listarEnderecos(); // Atualiza a lista após a exclusão
+        listarEnderecos(); 
     } catch (error) {
         console.error("Erro na exclusão:", error);
         alert("Ocorreu um erro ao excluir o endereço.");
@@ -106,7 +106,7 @@ async function alterarEndereco(id) {
 
         const endereco = await respostaApi.json();
         
-        localStorage.setItem('enderecoParaEditar', JSON.stringify(endereco)); // Salva o endereço no localStorage
+        localStorage.setItem('enderecoParaEditar', JSON.stringify(endereco)); 
         location.href = "../HTML/editarEnd.html";
 
         
@@ -133,7 +133,7 @@ async function logout() {
     if (response.ok) {
         alert("Logout realizado com sucesso.");
         localStorage.removeItem('user');
-        window.location.href = "/index.html";
+        window.location.href = "../index.html";
     } else {
         const errorData = await response.json();
         console.error("Erro ao fazer logout:", errorData);
